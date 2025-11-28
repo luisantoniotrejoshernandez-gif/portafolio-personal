@@ -8,81 +8,76 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  title = 'portafolio-personal';
+  // Información personal
+  nombre = signal('LUIS ANTONIO TREJOS HERNÁNDEZ');
+  edad = signal(21);
+  titulo = signal('Estudiante de Ingeniería en Sistemas');
+  
+  // Información académica
+  universidad = signal('Universidad Tecnológica de Cartagena - UNITECNAR');
+  semestre = signal('Séptimo Semestre');
+  promedio = signal('4.2/5.0');
+  
+  // Habilidades
+  habilidadesFrontend = signal(['Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Bootstrap']);
+  habilidadesBackend = signal(['Node.js', 'Python', 'Java', 'SQL', 'MongoDB']);
+  habilidadesHerramientas = signal(['Git', 'GitHub', 'Docker', 'VS Code', 'Figma']);
+  
+  // Proyectos
+  proyectos = signal([
+    'Sistema de Gestión Académica - Angular & Node.js',
+    'E-commerce Responsive - Bootstrap & JavaScript',
+    'Aplicación de Tareas en Tiempo Real',
+    'Portafolio Personal con Angular'
+  ]);
+  
+  // Contacto
+  email = signal('LUISANTONIO.TREJOSHERNANDEZ@UNITECNAR.EDU.CO');
+  telefono = signal('+57 300 000 0000');
+  ubicacion = signal('Cartagena, Colombia');
+  linkedin = signal('linkedin.com/in/luistrejos');
+  github = signal('github.com/luisantoniotrejoshernandez-gif');
 
-  // SEÑAL 1: Información personal
-  nombre = signal('Tu Nombre');
-  edad = signal(20);
-
-  // SEÑAL 2: Carrera/Estudios
-  carrera = signal('Ingeniería de Sistemas');
-
-  // SEÑAL 3: Hobbies (puede cambiar)
-  hobbies = signal(['Programar', 'Leer', 'Deportes']);
-
-  // SEÑAL 4: Contacto
-  email = signal('tu.email@ejemplo.com');
-
-  // SEÑAL 5: Estado de habilidades
-  mostrarHabilidades = signal(false);
-
-  // Función para cambiar el nombre (más profesional)
-cambiarNombre() {
-  if (this.nombre() === 'Luis Trejos') {
-    this.nombre.set('Luis Antonio Trejos');
-    this.edad.set(22);
-  } else {
-    this.nombre.set('Luis Trejos');
-    this.edad.set(20);
+  // Funciones interactivas
+  cambiarVistaPerfil() {
+    if (this.titulo() === 'Estudiante de Ingeniería en Sistemas') {
+      this.titulo.set('Desarrollador Full Stack Junior');
+    } else {
+      this.titulo.set('Estudiante de Ingeniería en Sistemas');
+    }
   }
-}
 
-// Función para cambiar la carrera
-cambiarCarrera() {
-  const carreras = [
-    'Ingeniería de Sistemas',
-    'Desarrollo Web Full Stack', 
-    'Ciencia de Datos',
-    'Inteligencia Artificial'
-  ];
-  const currentIndex = carreras.indexOf(this.carrera());
-  const nextIndex = (currentIndex + 1) % carreras.length;
-  this.carrera.set(carreras[nextIndex]);
-}
+  toggleHabilidadesAvanzadas = signal(false);
+  mostrarMasHabilidades() {
+    this.toggleHabilidadesAvanzadas.set(!this.toggleHabilidadesAvanzadas());
+  }
 
-// Función para cambiar hobbies
-cambiarHobbies() {
-  const setsHobbies = [
-    ['Programar', 'Leer', 'Deportes'],
-    ['Videojuegos', 'Música', 'Viajar', 'Fotografía'],
-    ['Cocinar', 'Cine', 'Gimnasio', 'Lectura'],
-    ['Natación', 'Pintura', 'Blogging', 'Idiomas']
-  ];
-  const currentSet = this.hobbies().join(',');
-  let nextSet;
-  
-  do {
-    nextSet = setsHobbies[Math.floor(Math.random() * setsHobbies.length)];
-  } while (nextSet.join(',') === currentSet);
-  
-  this.hobbies.set(nextSet);
-}
+  agregarProyecto() {
+    const nuevosProyectos = [
+      'API REST para Gestión de Inventarios',
+      'Dashboard de Analytics con Angular',
+      'Sistema de Autenticación Segura',
+      'Aplicación Móvil Multiplataforma'
+    ];
+    const randomProyecto = nuevosProyectos[Math.floor(Math.random() * nuevosProyectos.length)];
+    this.proyectos.update(proyectos => [...proyectos, randomProyecto]);
+  }
 
-// Función para mostrar/ocultar habilidades
-toggleHabilidades() {
-  this.mostrarHabilidades.set(!this.mostrarHabilidades());
-}
+  cambiarContacto() {
+    const contactos = [
+      'LUISANTONIO.TREJOSHERNANDEZ@UNITECNAR.EDU.CO',
+      'luis.trejos@desarrollador.co',
+      'contacto@luistrejos.dev'
+    ];
+    const indexActual = contactos.indexOf(this.email());
+    const nuevoIndex = (indexActual + 1) % contactos.length;
+    this.email.set(contactos[nuevoIndex]);
+  }
 
-// Función para cambiar email de contacto
-cambiarContacto() {
-  const emails = [
-    'LUISANTONIO.TREJOSHERNANDEZ@UNITECNAR.EDU.CO',
-    'luis.trejos@desarrollador.com',
-    'contacto@luistrejos.dev'
-  ];
-  const currentIndex = emails.indexOf(this.email());
-  const nextIndex = (currentIndex + 1) % emails.length;
-  this.email.set(emails[nextIndex]);
+  // Fecha actual
+  fechaActual = new Date().toLocaleDateString('es-CO', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 }
-}
-
