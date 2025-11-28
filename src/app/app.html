@@ -1,0 +1,56 @@
+<div class="container">
+  <header>
+    <h1>Portafolio de {{ nombre() }}</h1>
+    <p>Desarrollador Web | Estudiante</p>
+  </header>
+
+  <main>
+    <!-- SEÑAL 1: Información Personal -->
+    <section class="perfil">
+      <h2>Información Personal</h2>
+      <p><strong>Nombre:</strong> {{ nombre() }}</p>
+      <p><strong>Edad:</strong> {{ edad() }} años</p>
+      <button (click)="cambiarNombre()">Cambiar Mi Información</button>
+    </section>
+
+    <!-- SEÑAL 2: Información Académica -->
+    <section class="academica">
+      <h2>Información Académica</h2>
+      <p><strong>Carrera:</strong> {{ carrera() }}</p>
+      <button (click)="cambiarCarrera()">Cambiar Carrera</button>
+    </section>
+
+    <!-- SEÑAL 3: Hobbies -->
+    <section class="hobbies">
+      <h2>Mis Hobbies</h2>
+      <p><strong>Intereses:</strong> {{ hobbies().join(', ') }}</p>
+      <button (click)="cambiarHobbies()">Cambiar Hobbies</button>
+    </section>
+
+    <!-- SEÑAL 4: Habilidades (mostrar/ocultar) -->
+    <section class="habilidades">
+      <h2>Mis Habilidades</h2>
+      <button (click)="toggleHabilidades()">
+        {{ mostrarHabilidades() ? 'Ocultar' : 'Mostrar' }} Habilidades
+      </button>
+      
+      @if (mostrarHabilidades()) {
+        <div class="habilidades-lista">
+          <ul>
+            <li>Angular</li>
+            <li>TypeScript</li>
+            <li>HTML/CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+      }
+    </section>
+
+    <!-- SEÑAL 5: Contacto -->
+    <section class="contacto">
+      <h2>Contacto</h2>
+      <p><strong>Email:</strong> {{ email() }}</p>
+      <button (click)="cambiarContacto()">Cambiar Email de Contacto</button>
+    </section>
+  </main>
+</div>
