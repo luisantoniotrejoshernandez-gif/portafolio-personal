@@ -25,19 +25,47 @@ export class App {
 
   // SEÑAL 5: Estado de habilidades
   mostrarHabilidades = signal(false);
-  // Función para cambiar el nombre
-  cambiarNombre() {
-    this.nombre.set('Luis Trejos'); // Cambia por tu nombre real
-    this.edad.set(25); // Cambia por tu edad real
-  }
 
-  // Función para cambiar la carrera
-  cambiarCarrera() {
-    this.carrera.set('Desarrollo Web');
+  // Función para cambiar el nombre (más profesional)
+cambiarNombre() {
+  if (this.nombre() === 'Luis Trejos') {
+    this.nombre.set('Luis Antonio Trejos');
+    this.edad.set(22);
+  } else {
+    this.nombre.set('Luis Trejos');
+    this.edad.set(20);
   }
-  // Función para cambiar hobbies
+}
+
+// Función para cambiar la carrera
+cambiarCarrera() {
+  const carreras = [
+    'Ingeniería de Sistemas',
+    'Desarrollo Web Full Stack', 
+    'Ciencia de Datos',
+    'Inteligencia Artificial'
+  ];
+  const currentIndex = carreras.indexOf(this.carrera());
+  const nextIndex = (currentIndex + 1) % carreras.length;
+  this.carrera.set(carreras[nextIndex]);
+}
+
+// Función para cambiar hobbies
 cambiarHobbies() {
-  this.hobbies.set(['Videojuegos', 'Música', 'Viajar', 'Cocinar']);
+  const setsHobbies = [
+    ['Programar', 'Leer', 'Deportes'],
+    ['Videojuegos', 'Música', 'Viajar', 'Fotografía'],
+    ['Cocinar', 'Cine', 'Gimnasio', 'Lectura'],
+    ['Natación', 'Pintura', 'Blogging', 'Idiomas']
+  ];
+  const currentSet = this.hobbies().join(',');
+  let nextSet;
+  
+  do {
+    nextSet = setsHobbies[Math.floor(Math.random() * setsHobbies.length)];
+  } while (nextSet.join(',') === currentSet);
+  
+  this.hobbies.set(nextSet);
 }
 
 // Función para mostrar/ocultar habilidades
@@ -47,7 +75,14 @@ toggleHabilidades() {
 
 // Función para cambiar email de contacto
 cambiarContacto() {
-  this.email.set('nuevo.email@contacto.com');
+  const emails = [
+    'LUISANTONIO.TREJOSHERNANDEZ@UNITECNAR.EDU.CO',
+    'luis.trejos@desarrollador.com',
+    'contacto@luistrejos.dev'
+  ];
+  const currentIndex = emails.indexOf(this.email());
+  const nextIndex = (currentIndex + 1) % emails.length;
+  this.email.set(emails[nextIndex]);
 }
 }
 

@@ -1,37 +1,37 @@
 <div class="container">
   <header>
     <h1>Portafolio de {{ nombre() }}</h1>
-    <p>Desarrollador Web | Estudiante</p>
+    <p>Desarrollador Web Full Stack | Estudiante de Ingeniería</p>
   </header>
 
   <main>
     <!-- SEÑAL 1: Información Personal -->
     <section class="perfil">
-      <h2>Información Personal</h2>
+      <h2>👤 Información Personal</h2>
       <p><strong>Nombre:</strong> {{ nombre() }}</p>
       <p><strong>Edad:</strong> {{ edad() }} años</p>
-      <button (click)="cambiarNombre()">Cambiar Mi Información</button>
+      <button (click)="cambiarNombre()">🔄 Actualizar Mi Información</button>
     </section>
 
     <!-- SEÑAL 2: Información Académica -->
     <section class="academica">
-      <h2>Información Académica</h2>
+      <h2>🎓 Información Académica</h2>
       <p><strong>Carrera:</strong> {{ carrera() }}</p>
-      <button (click)="cambiarCarrera()">Cambiar Carrera</button>
+      <button (click)="cambiarCarrera()">📚 Cambiar Carrera</button>
     </section>
 
     <!-- SEÑAL 3: Hobbies -->
     <section class="hobbies">
-      <h2>Mis Hobbies</h2>
+      <h2>⚡ Mis Hobbies</h2>
       <p><strong>Intereses:</strong> {{ hobbies().join(', ') }}</p>
-      <button (click)="cambiarHobbies()">Cambiar Hobbies</button>
+      <button (click)="cambiarHobbies()">🎯 Cambiar Mis Intereses</button>
     </section>
 
     <!-- SEÑAL 4: Habilidades (mostrar/ocultar) -->
     <section class="habilidades">
-      <h2>Mis Habilidades</h2>
+      <h2>💻 Mis Habilidades Técnicas</h2>
       <button (click)="toggleHabilidades()">
-        {{ mostrarHabilidades() ? 'Ocultar' : 'Mostrar' }} Habilidades
+        {{ mostrarHabilidades() ? '👁️ Ocultar' : '🔍 Mostrar' }} Habilidades
       </button>
       
       @if (mostrarHabilidades()) {
@@ -39,8 +39,12 @@
           <ul>
             <li>Angular</li>
             <li>TypeScript</li>
-            <li>HTML/CSS</li>
+            <li>HTML5/CSS3</li>
             <li>JavaScript</li>
+            <li>Git/GitHub</li>
+            <li>Responsive Design</li>
+            <li>Bootstrap</li>
+            <li>Node.js</li>
           </ul>
         </div>
       }
@@ -48,9 +52,11 @@
 
     <!-- SEÑAL 5: Contacto -->
     <section class="contacto">
-      <h2>Contacto</h2>
+      <h2>📞 Contacto</h2>
       <p><strong>Email:</strong> {{ email() }}</p>
-      <button (click)="cambiarContacto()">Cambiar Email de Contacto</button>
+      <p><strong>GitHub:</strong> luisantoniotrejoshernandez-gif</p>
+      <p><strong>Ubicación:</strong> Colombia</p>
+      <button (click)="cambiarContacto()">📧 Cambiar Email de Contacto</button>
     </section>
   </main>
 </div>
